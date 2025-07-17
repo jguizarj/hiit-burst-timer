@@ -21,7 +21,11 @@ const Timer = ({ timeLeft }: TimerProps) => {
   const formattedSeconds = seconds.toString().padStart(2, "0");
   const formattedTime = `${formattedMinutes}:${formattedSeconds}`;
 
-  return <div>{formattedTime}</div>;
+  return (
+    <div className="text-center text-4xl font-bold text-gray-800">
+      {formattedTime}
+    </div>
+  );
 };
 
 export default Timer;

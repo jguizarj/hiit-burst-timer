@@ -40,16 +40,29 @@ const Controls = ({
   timeLeft,
 }: ControlsProps) => {
   return (
-    <div className="flex gap-4">
-      <button onClick={start} disabled={isRunning || timeLeft === 0}>
+    <div className="mt-4 flex justify-center gap-4">
+      <button
+        className="rounded bg-green-500 px-4 py-2 text-white disabled:bg-gray-300"
+        onClick={start}
+        disabled={isRunning || timeLeft === 0}
+      >
         Start
       </button>
 
-      <button onClick={pause} disabled={!isRunning}>
+      <button
+        className="rounded bg-yellow-500 px-4 py-2 text-white disabled:bg-gray-300"
+        onClick={pause}
+        disabled={!isRunning}
+      >
         Pause
       </button>
 
-      <button onClick={reset}>Reset</button>
+      <button
+        className="rounded bg-red-500 px-4 py-2 text-white"
+        onClick={reset}
+      >
+        Reset
+      </button>
     </div>
   );
 };
