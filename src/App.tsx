@@ -1,6 +1,7 @@
 import Timer from "./components/Timer";
 import useTraining from "./hooks/useTraining";
 import testTraining from "./constants/testTraining";
+import Controls from "./components/Controls";
 
 const App = () => {
   const {
@@ -14,19 +15,12 @@ const App = () => {
   } = useTraining(testTraining);
 
   return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: 16,
-      }}
-    >
+    <div>
       <h1>{testTraining.name}</h1>
-      
+
       <Timer timeLeft={timeLeft} />
 
-      <div style={{ textAlign: "center" }}>
+      <div>
         <p>
           Current Speed: {currentInterval?.minimumSpeed} -{" "}
           {currentInterval?.maximumSpeed} {testTraining.unit}
@@ -37,17 +31,13 @@ const App = () => {
         </p>
       </div>
 
-      <div style={{ display: "flex", gap: 8 }}>
-        <button onClick={start} disabled={isRunning || timeLeft === 0}>
-          Start
-        </button>
-
-        <button onClick={pause} disabled={!isRunning}>
-          Pause
-        </button>
-
-        <button onClick={reset}>Reset</button>
-      </div>
+      <Controls
+        start={start}
+        pause={pause}
+        reset={reset}
+        isRunning={isRunning}
+        timeLeft={timeLeft}
+      />
     </div>
   );
 };
