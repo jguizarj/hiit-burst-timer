@@ -1,8 +1,17 @@
 import Timer from "./components/Timer";
-import useCountdown from "./hooks/useCountdown";
+import useTraining from "./hooks/useTraining";
+import testTraining from "./constants/testTraining";
 
 const App = () => {
-  const { timeLeft, isRunning, start, pause, reset } = useCountdown(60);
+  const {
+    timeLeft,
+    isRunning,
+    currentInterval,
+    nextInterval,
+    startTraining: start,
+    pauseTraining: pause,
+    resetTraining: reset,
+  } = useTraining(testTraining);
 
   return (
     <div
@@ -14,6 +23,17 @@ const App = () => {
       }}
     >
       <Timer timeLeft={timeLeft} />
+
+      <div style={{ textAlign: "center" }}>
+        <p>
+          Current Speed: {currentInterval?.minimumSpeed} -{" "}
+          {currentInterval?.maximumSpeed} {currentInterval?.unit}
+        </p>
+        <p>
+          Next Speed: {nextInterval?.minimumSpeed} -{" "}
+          {nextInterval?.maximumSpeed} {nextInterval?.unit}
+        </p>
+      </div>
 
       <div style={{ display: "flex", gap: 8 }}>
         <button onClick={start} disabled={isRunning || timeLeft === 0}>
