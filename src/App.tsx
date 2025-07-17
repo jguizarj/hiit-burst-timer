@@ -22,16 +22,18 @@ const App = () => {
         gap: 16,
       }}
     >
+      <h1>{testTraining.name}</h1>
+      
       <Timer timeLeft={timeLeft} />
 
       <div style={{ textAlign: "center" }}>
         <p>
           Current Speed: {currentInterval?.minimumSpeed} -{" "}
-          {currentInterval?.maximumSpeed} {currentInterval?.unit}
+          {currentInterval?.maximumSpeed} {testTraining.unit}
         </p>
         <p>
           Next Speed: {nextInterval?.minimumSpeed} -{" "}
-          {nextInterval?.maximumSpeed} {nextInterval?.unit}
+          {nextInterval?.maximumSpeed} {testTraining.unit}
         </p>
       </div>
 

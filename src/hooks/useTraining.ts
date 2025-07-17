@@ -1,6 +1,7 @@
 import { useState, useCallback, useEffect } from "react";
 import useCountdown from "./useCountdown";
 import type { HiitInterval } from "../types/hiitInterval";
+import type { Training } from "../types/training";
 
 /**
  * Interface for the useTrainingCountdown hook return type.
@@ -45,29 +46,29 @@ interface UseTrainingCountdownResult {
 /**
  * useTrainingCountdown hook for managing a HIIT training session.
  *
- * @param {HiitInterval[]} intervals - Array of HIIT intervals.
+ * @param {Training} training - The training session data.
  * @returns {UseTrainingCountdownResult} The training state and controls.
  */
-const useTraining = (intervals: HiitInterval[]): UseTrainingCountdownResult => {
+const useTraining = (training: Training): UseTrainingCountdownResult => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
 
   // Get the current and next interval
-  const currentInterval = intervals[currentIndex] || null;
-  const nextInterval = intervals[currentIndex + 1] || null;
+  const currentInterval = training.intervals[currentIndex] || null;
+  const nextInterval = training.intervals[currentIndex + 1] || null;
 
   /**
    * Handles the end of the current interval and moves to the next one.
    * If at the last interval, stops the training.
    */
   const handleIntervalFinish = useCallback(() => {
-    if (currentIndex >= intervals.length - 1) {
+    if (currentIndex >= training.intervals.length - 1) {
       setIsRunning(false);
       return;
     }
 
     setCurrentIndex((prevIndex) => prevIndex + 1);
-  }, [currentIndex, intervals.length]);
+  }, [currentIndex, training.intervals.length]);
 
   // Countdown timer logic for the current interval
   const {

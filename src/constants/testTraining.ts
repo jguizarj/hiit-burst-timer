@@ -1,33 +1,33 @@
-import type { HiitInterval } from "../types/hiitInterval";
+import type { Training } from "../types/training";
 
 /**
  * A test training session.
  */
-const testTraining: HiitInterval[] = [
-  {
-    intervalDuration: 30,
-    minimumSpeed: 5,
-    maximumSpeed: 10,
-    unit: "km/h",
-  },
-  {
-    intervalDuration: 10,
-    minimumSpeed: 10,
-    maximumSpeed: 15,
-    unit: "km/h",
-  },
-  {
-    intervalDuration: 30,
-    minimumSpeed: 5,
-    maximumSpeed: 10,
-    unit: "km/h",
-  },
-  {
-    intervalDuration: 10,
-    minimumSpeed: 10,
-    maximumSpeed: 15,
-    unit: "km/h",
-  },
-];
+const testTraining: Training = {
+  name: "Test Training",
+  unit: "km/h",
+  intervals: [
+    {
+      intervalDuration: 30,
+      minimumSpeed: 5,
+      maximumSpeed: 10,
+    },
+    {
+      intervalDuration: 10,
+      minimumSpeed: 10,
+      maximumSpeed: 15,
+    },
+    {
+      intervalDuration: 30,
+      minimumSpeed: 5,
+      maximumSpeed: 10,
+    },
+    {
+      intervalDuration: 10,
+      minimumSpeed: 10,
+      maximumSpeed: 15,
+    },
+  ],
+};
 
 export default testTraining;

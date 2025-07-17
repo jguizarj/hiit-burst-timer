@@ -16,9 +16,4 @@ export interface HiitInterval {
    * The maximum speed during the interval.
    */
   maximumSpeed: number;
-
-  /**
-   * The unit of measurement for speed, such as "km/h", "mph", "rpm".
-   */
-  unit: string;
 }
