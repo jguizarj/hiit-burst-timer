@@ -32,10 +32,15 @@ interface UseCountdownResult {
 
 /**
  * useCountdown hook for managing countdown timer logic.
+ *
  * @param {number} initialSeconds - Initial countdown time in seconds.
+ * @param {Function} [onFinish] - Optional callback invoked when the countdown reaches zero.
  * @returns {UseCountdownResult} The countdown state and controls.
  */
-const useCountdown = (initialSeconds: number): UseCountdownResult => {
+const useCountdown = (
+  initialSeconds: number,
+  onFinish?: () => void
+): UseCountdownResult => {
   const [timeLeft, setTimeLeft] = useState(initialSeconds);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef<number | null>(null);
@@ -70,6 +75,10 @@ const useCountdown = (initialSeconds: number): UseCountdownResult => {
       if (intervalRef.current !== null) {
         clearInterval(intervalRef.current);
         intervalRef.current = null;
+      }
+
+      if (onFinish) {
+        onFinish();
       }
     }
   }, [now]);
@@ -121,14 +130,19 @@ const useCountdown = (initialSeconds: number): UseCountdownResult => {
     endTimeRef.current = null;
   }, [initialSeconds, pause]);
 
+  // Cleanup interval on unmount
   useEffect(() => {
-    // Cleanup interval on unmount
     return () => {
       if (intervalRef.current !== null) {
         clearInterval(intervalRef.current);
       }
     };
   }, []);
+
+  // Reset the timer when initialSeconds changes
+  useEffect(() => {
+    reset();
+  }, [initialSeconds, reset]);
 
   return { timeLeft, isRunning, start, pause, reset };
 };
