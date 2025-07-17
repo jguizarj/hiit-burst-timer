@@ -40,9 +40,9 @@ const TrainingControls = ({
   timeLeft,
 }: ControlsProps) => {
   return (
-    <div className="mt-4 flex justify-center gap-4">
+    <div className="mx-auto mt-4 flex w-full max-w-xs flex-col justify-center gap-3 sm:max-w-sm sm:flex-row sm:gap-4 md:max-w-md">
       <button
-        className="rounded bg-green-500 px-4 py-2 text-white disabled:bg-gray-300"
+        className="rounded bg-green-400 px-4 py-2 text-base font-semibold text-white shadow-md transition-transform duration-200 hover:scale-105 hover:bg-green-500 disabled:cursor-not-allowed disabled:bg-gray-300 sm:px-6 sm:py-3 sm:text-lg"
         onClick={start}
         disabled={isRunning || timeLeft === 0}
       >
@@ -50,7 +50,7 @@ const TrainingControls = ({
       </button>
 
       <button
-        className="rounded bg-yellow-500 px-4 py-2 text-white disabled:bg-gray-300"
+        className="rounded bg-yellow-300 px-4 py-2 text-base font-semibold text-gray-800 shadow-md transition-transform duration-200 hover:scale-105 hover:bg-yellow-400 disabled:cursor-not-allowed disabled:bg-gray-300 sm:px-6 sm:py-3 sm:text-lg"
         onClick={pause}
         disabled={!isRunning}
       >
@@ -58,7 +58,7 @@ const TrainingControls = ({
       </button>
 
       <button
-        className="rounded bg-red-500 px-4 py-2 text-white"
+        className="rounded bg-red-300 px-4 py-2 text-base font-semibold text-gray-800 shadow-md transition-transform duration-200 hover:scale-105 hover:bg-red-400 disabled:cursor-not-allowed sm:px-6 sm:py-3 sm:text-lg"
         onClick={reset}
       >
         Reset

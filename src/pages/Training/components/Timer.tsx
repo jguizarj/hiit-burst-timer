@@ -22,7 +22,7 @@ const Timer = ({ timeLeft }: TimerProps) => {
   const formattedTime = `${formattedMinutes}:${formattedSeconds}`;
 
   return (
-    <div className="text-center text-4xl font-bold text-gray-800">
+    <div className="bg-opacity-80 w-full max-w-xs rounded-lg bg-white px-6 py-4 text-center text-5xl font-bold text-gray-800 shadow-md sm:max-w-sm sm:text-6xl md:max-w-md md:text-7xl">
       {formattedTime}
     </div>
   );
