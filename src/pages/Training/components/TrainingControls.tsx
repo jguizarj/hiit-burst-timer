@@ -32,7 +32,7 @@ interface ControlsProps {
  * Controls Component
  * @param {ControlsProps} props - Props for the controls.
  */
-const Controls = ({
+const TrainingControls = ({
   start,
   pause,
   reset,
@@ -67,4 +67,4 @@ const Controls = ({
   );
 };
 
-export default Controls;
+export default TrainingControls;
