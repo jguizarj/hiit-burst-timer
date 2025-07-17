@@ -1,5 +1,5 @@
 import Timer from "./components/Timer";
-import useCountdown from "./components/useCountdown";
+import useCountdown from "./hooks/useCountdown";
 
 const App = () => {
   const { timeLeft, isRunning, start, pause, reset } = useCountdown(60);
